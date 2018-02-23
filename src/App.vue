@@ -5,8 +5,7 @@
       <div id="search"></div>
       <p> This is the sidebar </p>
     </div>
-    <div ref="toggleOn" id="toggleOn" v-on:click="toggleSideBarOn">
-    </div>
+    <label ref="toggleOn" id="toggleOn" v-on:click="toggleSideBarOn">☰</label>
     <div ref="appContainer" id="app">
       <router-link to="/"> Main </router-link>
       <div></div>
@@ -30,14 +29,10 @@
     name: 'App',
     methods: {
       toggleSideBarOn: function() {
-        this.$refs["sidebar"].style.width = "25%";
-        this.$refs["sidebar"].style.display = "block";
-        this.$refs["toggleOn"].style.display = "none";
+        this.$refs["sidebar"].style.left = "0%";
       },
       toggleSideBarOff: function() {
-        this.$refs["appContainer"].style.marginLeft = "0%";
-        this.$refs["sidebar"].style.display = "none";
-        this.$refs["toggleOn"].style.display = "inline-block";
+        this.$refs["sidebar"].style.left = "-25%";
       }
     }
   }
@@ -64,6 +59,8 @@
     height: 25px;
     display: inline-block;
     background-color: aqua;
+    text-align: center;
+    cursor: pointer;
   }
 
   #toggleOff {
@@ -73,17 +70,20 @@
     display: inline-block;
   }
 
+  #sidebar {
+    height: 100vh;
+    background-color:gray;
+    width: 25%;
+    position: fixed;
+    transition: all 1s;
+    left: -25%;
+  }
+
   #search {
     height: 35px;
     width: 75%;
     background-color: black;
     display: inline-block;
-  }
-
-  #sidebar {
-    height: 100vh;
-    background-color:gray;
-    display: none;
   }
 
   #armor {
